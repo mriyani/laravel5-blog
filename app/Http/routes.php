@@ -12,39 +12,53 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::get('/about', function () {
-    return view('about');
+	return view('about');
 });
 
 Route::group(['prefix'=>'admin'], function() {
 	Route::get('/welcome', function () {
-	    return "Welcome to Villa Mataanor";
+		return "Welcome to Villa Mataanor";
 	});
 
 	Route::get('/welcome/{name}', function ($name) {
-	    return "welcome $name";
+		return "welcome $name";
 	});
 
 	Route::get('/welcome/{name?}', function ($name='guest') {
-	    return "welcome $name to Villa Mataanor!";
+		return "welcome $name to Villa Mataanor!";
 	});
 
 	Route::get('/marhaban/{name?}',[
-	 'as' => 'welcome.guest',
-	 function ($name = 'guest') {
-	    return "welcome $name to Villa Mataanor!";
-	}]);
+		'as' => 'welcome.guest',
+		function ($name = 'guest') {
+			return "welcome $name to Villa Mataanor!";
+		}]);
 
 });
 
-	Route::post('login-submit', function() {
+Route::post('login-submit', function() {
 
 			//return "Login success!";
-		$result = "Username : " . Request::get('username');
-		$result .= " | Password : " . Request::get('password');
+	$result = "Username : " . Request::get('username');
+	$result .= " | Password : " . Request::get('password');
 
-		return $result;
-	});
+	return $result;
+});
+
+Route::get('posts', function() {
+
+	return view('posts.index');
+
+});
+
+Route::get('posts/{id}', function($id) {
+
+	$post = App\Post::find($id);
+	return view('posts.show')->with('post',$post);
+
+
+});
