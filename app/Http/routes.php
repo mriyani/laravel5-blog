@@ -49,7 +49,7 @@ Route::post('login-submit', function() {
 	return $result;
 });
 
-Route::get('posts', 'PostsController@index'); 
+Route::resource('posts', 'PostsController'); 
 
 /*Route::get('posts/{id}', function($id) {
 
@@ -59,4 +59,4 @@ Route::get('posts', 'PostsController@index');
 
 });*/
 
-Route::get('posts/{id}','PostsController@show');
+//Route::get('posts/{id}','PostsController@show');
