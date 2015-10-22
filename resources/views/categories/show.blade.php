@@ -1,8 +1,8 @@
 @extends ('master')
 @section ('content')
 
-<h1>{{ $post->title}}</h1>
-	<p>Category: <em>{{ $post->category->title}}</em></p>
-	<p>{{ $post-> content}}</p>
+<h1>{{ $category->title}}</h1>
+	<p>Category: <em>{{ $category->category->title}}</em></p>
+	<p>{{ $category-> content}}</p>
 	<a href="/categories">Back</a>
 @stop

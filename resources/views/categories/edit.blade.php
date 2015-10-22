@@ -2,11 +2,11 @@
 
 @section ('content')
 
-{!! Form::model($post,array('route' => array('posts.update', $post->id), 'method' => 'put')) !!}
+{!! Form::model($category,array('route' => array('categories.update', $category->id), 'method' => 'put')) !!}
 
 @include('errors._validation')
 
-<legend class="title">Edit Post</legend>
+<legend class="title">Edit Category</legend>
 
 @include('categories._form')
 

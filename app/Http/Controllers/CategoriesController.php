@@ -15,8 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $posts = \App\Post::all();
-        return view('categories.index', compact('posts'));
+        $categories = \App\Category::all();
+        return view('categories.index', compact('categories'));
 
     }
 
@@ -40,14 +40,10 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
 
-         $this->validate($request, [
-        'title' => 'required|max:255',
-        'content' => 'required',
-        'category_id' => 'required'],
-        ['title.required' => 'Please type blog title.']);
-        //
-        //$post = \App\Post::create($request->all() + ['category_id' => 1]);
-        $post = \App\Post::create($request->all());
+        $this->validate($request, ['title' => 'required']);
+
+        \App\Category::create($request->all());
+        
         return redirect()->route('categories.index');
 
 
@@ -61,8 +57,8 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        $post = \App\Post::find($id);
-        return view('categories.show', compact('post'));
+        $post = \App\Category::find($id);
+        return view('categories.show', compact('category'));
 
     }
 
@@ -75,8 +71,8 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
-        $post = \App\Post::find($id);
-        return view('posts.edit', compact('post'));
+        $category = \App\Category::find($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -89,14 +85,10 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, [
-        'title' => 'required|max:255',
-        'content' => 'required',
-        'category_id' => 'required'],
-        ['title.required' => 'Please type blog title.']);
+        $this->validate($request, ['title' => 'required']);
         //
-        $post = \App\Post::find($id);
-        $post->update($request->all());
+        $category = \App\Category::find($id);
+        $category->update($request->all());
         return redirect()->route('categories.index');
     }
 
@@ -109,9 +101,9 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        $post = \App\Post::find($id);
+        $category = \App\Category::find($id);
 
-        $post->delete();
+        $category->delete();
 
         return redirect()->route('categories.index');
     }
