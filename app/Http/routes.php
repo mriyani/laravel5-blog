@@ -49,16 +49,14 @@ Route::post('login-submit', function() {
 	return $result;
 });
 
-Route::get('posts', function() {
+Route::get('posts', 'PostsController@index'); 
 
-	return view('posts.index');
-
-});
-
-Route::get('posts/{id}', function($id) {
+/*Route::get('posts/{id}', function($id) {
 
 	$post = App\Post::find($id);
 	return view('posts.show')->with('post',$post);
 
 
-});
+});*/
+
+Route::get('posts/{id}','PostsController@show');

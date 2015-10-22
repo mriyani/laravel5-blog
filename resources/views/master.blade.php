@@ -17,9 +17,7 @@
         <li>
           <a href="/posts">Posts</a>
         </li>
-        
       </ul>
-
     </div>
 
       @yield('content')
