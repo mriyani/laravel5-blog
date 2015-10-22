@@ -51,6 +51,7 @@ Route::post('login-submit', function() {
 
 Route::resource('posts', 'PostsController'); 
 
+Route::resource('categories', 'CategoriesController'); 
 /*Route::get('posts/{id}', function($id) {
 
 	$post = App\Post::find($id);

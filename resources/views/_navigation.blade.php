@@ -1,3 +1,4 @@
+<!-- Posts Section -->
 <div class="navbar">
 	<a class="navbar-brand" href="#">Blog App</a>
 
@@ -6,6 +7,11 @@
 		<li>
 			
 			<a href="/posts">Posts</a>
+
+		</li>
+		<li>
+			
+			<a href="/categories">Categories</a>
 
 		</li>
 

@@ -1,0 +1,25 @@
+@extends ('master')
+@section ('content')
+
+<table class="table table-striped">
+	<tr>
+		<th>Title</th>
+		<th>Content</th>
+		<th>Category</th>
+		<th>Action</th>
+	</tr>
+@foreach ($posts as $post)
+	<tr>
+		<td><a href="/categories/{{ $post->id }}">{{ $post->title }}</a></td>
+		<td>{{ str_limit($post->content,20) }}</td>
+		<td>{{ $post->category->title }}</td>
+		<td>
+			{!! Form::model($post,array('route' => array('categories.destroy', $post->id), 'method' => 'delete')) !!}
+			<a href="{{route('categories.edit', ['posts' => $post->id])}}">Edit</a>
+			{!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger js-submit-confirm'])!!}
+			{!! Form::close() !!}
+		</td>
+	</tr>
+@endforeach
+</table> 
+@stop
