@@ -16,7 +16,7 @@
 		<td>
 			{!! Form::model($post,array('route' => array('posts.destroy', $post->id), 'method' => 'delete')) !!}
 			<a href="{{route('posts.edit', ['posts' => $post->id])}}">Edit</a>
-			{!! Form::submit('Delete', ['class' => 'btn btn-danger'])!!}
+			{!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])!!}
 			{!! Form::close() !!}
 		</td>
 	</tr>
