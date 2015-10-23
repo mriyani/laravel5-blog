@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+/**Route::get('/', function () {
 	return view('welcome');
-});
+});*/
+
+Route::get('/', 'PostsController@index');
 
 Route::get('/about', function () {
 	return view('about');
@@ -52,12 +54,23 @@ Route::post('login-submit', function() {
 Route::resource('posts', 'PostsController'); 
 
 Route::resource('categories', 'CategoriesController'); 
+
+Route::get('home', 'PostsController@index');
+
 /*Route::get('posts/{id}', function($id) {
 
 	$post = App\Post::find($id);
 	return view('posts.show')->with('post',$post);
 
-
 });*/
 
 //Route::get('posts/{id}','PostsController@show');
+
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
