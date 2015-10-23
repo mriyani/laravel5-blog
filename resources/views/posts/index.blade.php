@@ -22,4 +22,7 @@
 	</tr>
 @endforeach
 </table> 
+
+{!! $posts->render()!!}
+
 @stop
